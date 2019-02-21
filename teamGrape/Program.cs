@@ -1,18 +1,47 @@
 ﻿using System;
 
 
-namespace teamGrape
+namespace C0725030_Project
 {
-    class program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
-
 
     class CountrySide
     {
+        static void Main()
+        {
+            new CountrySide().Run();
+
+        }
+
+        public void Run()
+        {
+            //Call the village and Alst is the starting point
+            this.TravelVillages(Alst);
+
+            Alst = new Village("Alst", false);
+            Schvenig = new Village("Schenig", false);
+            //Maeland = new Village("Maeland", false);
+            //Helmholtz = new Village("Helmholtz", false);
+            //Uster = new Village("Uster", false);
+            //Badden = new Village("Badden", false);
+            Wessig = new Village("Wessing", true);
+
+            Alst.distanceToEastVillage = 19;
+            Alst.distanceToWestVillage = 14;
+            Alst.west = Schvenig;
+            Alst.east = Wessig;
+
+            //Schvenig.distanceToNextVillage = 14;
+            Schvenig.west = null;
+            Schvenig.east = null;
+
+            //Wessig.distanceToNextVillage = 19;
+            Wessig.west = null;
+            Wessig.east = null;
+
+            CurrentVillage = Alst;
+
+        }
+
         // Create the LinkedList to reflect the Map in the PowerPoint Instructions
         Village Maeland;
         Village Helmholtz;
@@ -21,57 +50,39 @@ namespace teamGrape
         Village Badden;
         Village Uster;
         Village Schvenig;
-        public void Travelvillages(Village currentvillage)
+        Village CurrentVillage;
+
+        public void TravelVillages(Village CurrentVillage)
         {
-            if (currentvillage.isAstrildgeHere)
+
+            if (CurrentVillage.isAstrildgeHere)
             {
-                Console.WriteLine("i found dear Astridge in {0}", currentvillage.VillageName);
-                Console.WriteLine("feeling happy");
+                Console.WriteLine("I found Dear Astrildge in {}", CurrentVillage.VillageName);
+                Console.WriteLine("*****FELLING HAPPY!!!*****");
                 return;
             }
-            Travelvillages(currentvillage.west);
-            Travelvillages(currentvillage.east);
+
+            //This is recursion
+            TravelVillages(CurrentVillage.west);
+            TravelVillages(CurrentVillage.east);
         }
-
-        public void Run()
-        {
-            Alst = new Village("Alst", false);
-            Schvenig = new Village("Schveing", false);
-            Wessig = new Village("Wessig", true);
-            Alst.distanceToeastVillage = 14;
-            Alst.distanceTowesttVillage = 19;
-            Alst.west = Schvenig;
-            Alst.east = Wessig;
-
-            Schvenig.west = null;
-            Schvenig.east = null;
-
-            Wessig.west = null;
-            Wessig.east = null;
-        }
-
-
     }
-
-
-
-}
-
-
-class Village
-{
-    public Village(string _villageName, bool _isAHere)
+    class Village
     {
-        isAstrildgeHere = _isAHere;
-        VillageName = _villageName;
+        public Village(string _villageName, bool _isAHere)
+        {
+            isAstrildgeHere = _isAHere;
+            VillageName = _villageName;
+        }
+
+        public string CurrentVillage;
+        public Village west;
+        public Village east;
+        public string VillageName;
+        public int distanceToNextVillage;
+        public int distanceToWestVillage;
+        public int distanceToEastVillage;
+        public int distanceToPreviousVillage;
+        public bool isAstrildgeHere;
     }
-
-    public Village west;
-    public Village east;
-    public string VillageName;
-    public int distanceToeastVillage;
-    public int distanceTowesttVillage;
-    public int distanceToPreviousVillage;
-    public bool isAstrildgeHere;
 }
-
