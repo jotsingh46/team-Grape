@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace C0725030_Project
+namespace teamgrape
 {
 
     class CountrySide
