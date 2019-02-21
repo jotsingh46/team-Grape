@@ -43,6 +43,7 @@ namespace teamgrape
         }
 
         // Create the LinkedList to reflect the Map in the PowerPoint Instructions
+
         Village Maeland;
         Village Helmholtz;
         Village Alst;
