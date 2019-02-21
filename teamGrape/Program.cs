@@ -7,7 +7,6 @@ namespace teamGrape
     {
         static void Main(string[] args)
         {
-
         }
     }
 
